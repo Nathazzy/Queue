@@ -1,6 +1,7 @@
 package com.matritellabs.utama.collection;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class MyQueue implements Queue {
 
@@ -24,7 +25,11 @@ public class MyQueue implements Queue {
 
     @Override
     public Object element() {
-        return theList.getFirst();
+        if (theList.getFirst()!=null) {
+            return theList.getFirst();
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @Override
@@ -60,8 +65,12 @@ public class MyQueue implements Queue {
     @Override
     public Object remove(){
         Object o = theList.getFirst();
-        theList.removeFirst();
-        return o;
+        if (o!=null) {
+            theList.removeFirst();
+            return o;
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
 }

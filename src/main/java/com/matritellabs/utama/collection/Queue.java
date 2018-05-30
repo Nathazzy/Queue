@@ -14,6 +14,7 @@ interface Queue {
 
     /**
      * Retrieves, but does not remove, the head of this queue.
+     * Throws: NoSuchElementException - if this queue is empty
      */
     Object element();
 
@@ -38,6 +39,7 @@ interface Queue {
 
     /**
      * Retrieves and removes the head of this queue.
+     * Throws: NoSuchElementException - if this queue is empty
      */
     Object remove();
 
