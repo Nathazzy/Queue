@@ -1,14 +1,20 @@
 package com.matritellabs.utama.collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 public class MyQueue implements Queue {
 
+    public static Logger myLogger = LoggerFactory.getLogger(MyQueue.class);
+
     private LinkedList<Object> theList;
     private int capacity;
 
     public MyQueue(int capacity){
+        myLogger.info("MyQueue instantiated with "+capacity+" capacity.");
         this.capacity = capacity;
         this.theList = new LinkedList<>();
     }
@@ -16,8 +22,10 @@ public class MyQueue implements Queue {
     @Override
     public boolean add(Object e){
         if (theList.size()>=capacity) {
+            myLogger.debug("add method called with full capacity");
             throw new IllegalStateException();
         } else {
+            myLogger.info(e+" object added");
             theList.addLast(e);
             return true;
         }

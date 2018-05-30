@@ -12,15 +12,24 @@ public class QueueTest {
 
     @Test
     public void addTest(){
-        Assert.assertEquals(true,testQueue.add(4));
+        System.out.println(testQueue);
+        String[] testArr = new String[3];
+        Assert.assertEquals(true,testQueue.add(100));
+        Assert.assertEquals(100,testQueue.poll());
         Assert.assertEquals(true,testQueue.add("What"));
-        Assert.assertEquals(true,testQueue.add(new String[3]));
+        Assert.assertEquals("What",testQueue.poll());
+        Assert.assertEquals(true,testQueue.add(testArr));
+        Assert.assertEquals(testArr,testQueue.poll());
         Assert.assertEquals(true,testQueue.add(3.0d));
+        Assert.assertEquals(3.0d,testQueue.poll());
         Assert.assertEquals(true,testQueue.add(true));
+        Assert.assertEquals(true,testQueue.poll());
     }
+
 
     @Test(expected = IllegalStateException.class)
     public void addExceptionTest(){
+        System.out.println(testQueue);
         Assert.assertEquals(true,testQueue.add(4));
         Assert.assertEquals(true,testQueue.add("What"));
         Assert.assertEquals(true,testQueue.add("asd"));
@@ -31,6 +40,7 @@ public class QueueTest {
 
     @Test
     public void elementTest() {
+        System.out.println(testQueue);
         Assert.assertEquals(true,testQueue.add(4));
         Assert.assertEquals(true,testQueue.add(16));
         Assert.assertEquals(4,testQueue.element());
@@ -38,6 +48,7 @@ public class QueueTest {
 
     @Test(expected = NoSuchElementException.class)
     public void elementExceptionTest() {
+        System.out.println(testQueue);
         Assert.assertEquals(16,testQueue.element());
         Assert.assertEquals(true,testQueue.add(16));
         Assert.assertEquals(16,testQueue.element());
@@ -46,6 +57,8 @@ public class QueueTest {
 
     @Test
     public void offerTest(){
+
+        System.out.println(testQueue);
         Assert.assertEquals(true,testQueue.offer(4));
         Assert.assertEquals(true,testQueue.offer("What"));
         Assert.assertEquals(true,testQueue.offer("asd"));
@@ -56,6 +69,7 @@ public class QueueTest {
 
     @Test
     public void peekTest(){
+        System.out.println(testQueue);
         Assert.assertEquals(null,testQueue.peek());
         Assert.assertEquals(true,testQueue.add(4));
         Assert.assertEquals(true,testQueue.add(16));
@@ -93,11 +107,6 @@ public class QueueTest {
         Assert.assertEquals(16,testQueue.remove());
         Assert.assertEquals("String",testQueue.remove());
     }
-
-
-
-
-
 
 
 }
